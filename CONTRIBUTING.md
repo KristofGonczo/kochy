@@ -68,13 +68,8 @@ Run `pnpm prisma:generate` after changing the Prisma schema. Use `pnpm prisma:mi
 - [Lucide](https://lucide.dev/) icons
 - [PostgreSQL](https://www.postgresql.org/) for local development
 - [Prisma](https://www.prisma.io/) as the ORM
+- [Better Auth](https://www.better-auth.com/) for authentication
 - [pnpm](https://pnpm.io/) for package management
-
-### Planned
-
-The following tools will be added as the application grows:
-
-- [Auth.js](https://authjs.dev/) for authentication
 
 ## Contribution guidelines
 
