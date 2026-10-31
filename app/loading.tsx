@@ -1,5 +1,7 @@
+import { Spinner } from "@/components/ui/spinner";
+
 const Loading = () => {
-  return <div>Loading</div>;
+  return <Spinner className="size-16 m-auto text-primary" />;
 };
 
 export default Loading;
