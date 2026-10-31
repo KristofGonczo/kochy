@@ -45,6 +45,16 @@ pnpm build
 pnpm start
 ```
 
+Prisma commands:
+
+```bash
+pnpm prisma:generate
+pnpm prisma:migrate
+pnpm prisma:studio
+```
+
+Run `pnpm prisma:generate` after changing the Prisma schema. Use `pnpm prisma:migrate` to create and apply a development migration, and `pnpm prisma:studio` to inspect the local database in Prisma Studio.
+
 ## Tech stack
 
 ### Current
@@ -57,6 +67,7 @@ pnpm start
 - [Base UI](https://base-ui.com/)
 - [Lucide](https://lucide.dev/) icons
 - [PostgreSQL](https://www.postgresql.org/) for local development
+- [Prisma](https://www.prisma.io/) as the ORM
 - [pnpm](https://pnpm.io/) for package management
 
 ### Planned
@@ -64,7 +75,6 @@ pnpm start
 The following tools will be added as the application grows:
 
 - [Auth.js](https://authjs.dev/) for authentication
-- [Prisma](https://www.prisma.io/) as the ORM
 
 ## Contribution guidelines
 
