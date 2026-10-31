@@ -15,6 +15,14 @@ Install dependencies from the repository root:
 pnpm install
 ```
 
+Start the local PostgreSQL database before running the app:
+
+```bash
+docker compose up -d postgres
+```
+
+The app requires this Docker Compose service to be running locally. The root [`docker-compose.yml`](./docker-compose.yml) is for local development only and is not a production deployment configuration. By default, it creates the `kochy` database for the `kochy` user with the password `kochy_dev_password`, exposed at `localhost:5432`. Set `POSTGRES_DB`, `POSTGRES_USER`, or `POSTGRES_PASSWORD` in your environment before starting Compose to override these development defaults.
+
 Start the development server:
 
 ```bash
@@ -22,6 +30,12 @@ pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser. The app uses Next.js' development server and updates as you edit files.
+
+Stop the database while preserving its data:
+
+```bash
+docker compose down
+```
 
 Useful commands:
 
@@ -42,13 +56,13 @@ pnpm start
 - [shadcn/ui](https://ui.shadcn.com/)
 - [Base UI](https://base-ui.com/)
 - [Lucide](https://lucide.dev/) icons
+- [PostgreSQL](https://www.postgresql.org/) for local development
 - [pnpm](https://pnpm.io/) for package management
 
 ### Planned
 
 The following tools will be added as the application grows:
 
-- [PostgreSQL](https://www.postgresql.org/) for the database
 - [Auth.js](https://authjs.dev/) for authentication
 - [Prisma](https://www.prisma.io/) as the ORM
 
