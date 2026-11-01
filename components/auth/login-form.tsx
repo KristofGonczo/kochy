@@ -11,12 +11,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { authClient } from "@/lib/auth-client";
+import { useTranslations } from "next-intl";
 import Form from "next/form";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export function LoginForm() {
   const router = useRouter();
+  const t = useTranslations("Login");
+
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -36,11 +39,7 @@ export function LoginForm() {
 
       router.push("/");
     } catch (error) {
-      setError(
-        error instanceof Error
-          ? error.message
-          : "Unable to sign in. Please try again.",
-      );
+      setError(error instanceof Error ? error.message : t("error"));
     } finally {
       setIsSubmitting(false);
     }
@@ -50,7 +49,7 @@ export function LoginForm() {
     <Form action={handleSubmit}>
       <FieldGroup>
         <Field>
-          <FieldLabel htmlFor="email">Email</FieldLabel>
+          <FieldLabel htmlFor="email">{t("email")}</FieldLabel>
           <Input
             required
             autoComplete="email"
@@ -60,7 +59,7 @@ export function LoginForm() {
           />
         </Field>
         <Field>
-          <FieldLabel htmlFor="password">Password</FieldLabel>
+          <FieldLabel htmlFor="password">{t("password")}</FieldLabel>
           <Input
             required
             autoComplete="current-password"
@@ -72,12 +71,12 @@ export function LoginForm() {
         <Field orientation="horizontal">
           <Checkbox id="remember-me" name="rememberMe" />
           <Label htmlFor="remember-me" className="text-muted-foreground">
-            Remember me
+            {t("rememberMe")}
           </Label>
         </Field>
         <Field>
           <Button disabled={isSubmitting} type="submit">
-            {isSubmitting ? "Signing in..." : "Sign in"}
+            {isSubmitting ? t("signingIn") : t("signIn")}
           </Button>
           {error && (
             <FieldDescription className="text-destructive">
@@ -86,13 +85,13 @@ export function LoginForm() {
           )}
         </Field>
         <p className="text-center text-sm text-muted-foreground">
-          Don&apos;t have an account?{" "}
+          {t("noAccount")}{" "}
           <Button
             variant="link"
             className="px-0"
             onClick={() => router.push("/signup")}
           >
-            Sign up
+            {t("signUp")}
           </Button>
         </p>
       </FieldGroup>

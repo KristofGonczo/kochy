@@ -1,0 +1,14 @@
+{
+  "Login": {
+    "title": "Welcome back",
+    "description": "Sign in to continue to Kochy.",
+    "error": "Unable to sign in. Please try again.",
+    "email": "Email",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "signingIn": "Signing in...",
+    "signIn": "Sign in",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up"
+  }
+}

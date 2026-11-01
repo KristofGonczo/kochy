@@ -6,15 +6,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { getTranslations } from "next-intl/server";
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  const t = await getTranslations("Login");
+
   return (
     <Card className="max-w-md w-full h-max m-auto">
       <CardHeader className="text-center">
         <CardTitle className="text-3xl font-bold tracking-tight">
-          Welcome back
+          {t("title")}
         </CardTitle>
-        <CardDescription>Sign in to continue to Kochy.</CardDescription>
+        <CardDescription>{t("description")}</CardDescription>
       </CardHeader>
       <CardContent>
         <LoginForm />
