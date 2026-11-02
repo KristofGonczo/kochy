@@ -18,13 +18,15 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import type { Locale } from "@/i18n/locales";
 import { authClient } from "@/lib/auth-client"; // import the auth client
 import { LogOut } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { redirect } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { LanguageSelect } from "./language-select";
 
-const Sidebar = () => {
+const Sidebar = ({ initialLocale }: { initialLocale?: Locale }) => {
   const t = useTranslations("Sidebar");
   const session = authClient.useSession();
   const { open } = useSidebar();
@@ -35,16 +37,22 @@ const Sidebar = () => {
         <SidebarMenu>
           <DropdownMenu>
             <SidebarMenuItem>
-              <DropdownMenuTrigger render={<SidebarMenuButton size="lg" />}>
-                <Avatar size={open ? "lg" : "default"}>
+              <DropdownMenuTrigger
+                render={
+                  <SidebarMenuButton className="sidebar-avatar-trigger group-data-[collapsible=icon]:[&.sidebar-avatar-trigger]:p-0!" />
+                }
+              >
+                <Avatar>
                   <AvatarImage />
                   <AvatarFallback>
                     {session.data?.user.name.charAt(0)}
                   </AvatarFallback>
                 </Avatar>
-                <span className="font-semibold text-lg">
-                  {open && session.data?.user.name}
-                </span>
+                {open && (
+                  <span className="font-semibold text-lg">
+                    {session.data?.user.name}
+                  </span>
+                )}
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
                 <DropdownMenuGroup>
@@ -69,7 +77,16 @@ const Sidebar = () => {
         <SidebarGroup />
         <SidebarGroup />
       </SidebarContent>
-      <SidebarFooter />
+      <SidebarFooter>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <LanguageSelect
+              initialLocale={initialLocale}
+              renderTrigger={<SidebarMenuButton />}
+            />
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
     </ShadCnSidebar>
   );
 };

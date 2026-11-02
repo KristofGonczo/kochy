@@ -24,5 +24,10 @@
     "haveAccount": "Már van fiókod?",
     "signIn": "Bejelentkezés",
     "passwordsDoNotMatch": "A jelszavak nem egyeznek."
+  },
+  "Sidebar": {
+    "logOut": "Kijelentkezés",
+    "language": "Nyelv",
+    "languageAuto": "Automatikus"
   }
 }

@@ -26,6 +26,8 @@
     "passwordsDoNotMatch": "Passwords do not match."
   },
   "Sidebar": {
-    "logOut": "Log out"
+    "logOut": "Log out",
+    "language": "Language",
+    "languageAuto": "Auto"
   }
 }
