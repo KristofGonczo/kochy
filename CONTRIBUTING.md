@@ -57,8 +57,6 @@ Run `pnpm prisma:generate` after changing the Prisma schema. Use `pnpm prisma:mi
 
 ## Tech stack
 
-### Current
-
 - [Next.js](https://nextjs.org/) 16 with the App Router
 - [React](https://react.dev/) 19
 - [TypeScript](https://www.typescriptlang.org/)
@@ -69,6 +67,7 @@ Run `pnpm prisma:generate` after changing the Prisma schema. Use `pnpm prisma:mi
 - [PostgreSQL](https://www.postgresql.org/) for local development
 - [Prisma](https://www.prisma.io/) as the ORM
 - [Better Auth](https://www.better-auth.com/) for authentication
+- [next-intl](https://next-intl.dev/) for internationalization
 - [pnpm](https://pnpm.io/) for package management
 
 ## Contribution guidelines
