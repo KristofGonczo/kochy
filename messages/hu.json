@@ -1,0 +1,28 @@
+{
+  "Login": {
+    "title": "Üdv újra",
+    "description": "Jelentkezz be a Kochy-ba.",
+    "error": "A bejelentkezés nem sikerült. Próbáld újra.",
+    "email": "E-mail",
+    "password": "Jelszó",
+    "rememberMe": "Emlékezz rám",
+    "signingIn": "Bejelentkezés...",
+    "signIn": "Bejelentkezés",
+    "noAccount": "Még nincs fiókod?",
+    "signUp": "Regisztráció"
+  },
+  "SignUp": {
+    "title": "Fiók létrehozása",
+    "description": "Regisztrálj a kezdéshez.",
+    "error": "A regisztráció nem sikerült. Próbáld újra.",
+    "displayName": "Megjelenítési név",
+    "email": "E-mail",
+    "password": "Jelszó",
+    "confirmPassword": "Jelszó megerősítése",
+    "creatingAccount": "Fiók létrehozása...",
+    "signUp": "Regisztráció",
+    "haveAccount": "Már van fiókod?",
+    "signIn": "Bejelentkezés",
+    "passwordsDoNotMatch": "A jelszavak nem egyeznek."
+  }
+}
