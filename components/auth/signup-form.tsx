@@ -17,18 +17,15 @@ export function SignupForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   async function handleSubmit(formData: FormData) {
-    setError(null);
-    setIsSubmitting(true);
-
-    const password = String(formData.get("password"));
-    const confirmPassword = String(formData.get("confirmPassword"));
-    if (password !== confirmPassword) {
-      setError(t("passwordsDoNotMatch"));
-      setIsSubmitting(false);
-      return;
-    }
-
     try {
+      setError(null);
+      setIsSubmitting(true);
+
+      const password = String(formData.get("password"));
+      const confirmPassword = String(formData.get("confirmPassword"));
+      if (password !== confirmPassword)
+        throw new Error(t("passwordsDoNotMatch"));
+
       const result = await authClient.signUp.email({
         name: String(formData.get("name")),
         email: String(formData.get("email")),
@@ -36,19 +33,15 @@ export function SignupForm() {
         callbackURL: "/",
       });
 
-      if (result.error) {
-        setError(result.error.message ?? t("error"));
-        setIsSubmitting(false);
-        return;
-      }
+      if (result.error) throw new Error(result.error.message ?? t("error"));
+
+      router.push("/");
+      router.refresh();
     } catch (error) {
       setError(error instanceof Error ? error.message : t("error"));
+    } finally {
       setIsSubmitting(false);
-      return;
     }
-
-    router.push("/");
-    router.refresh();
   }
 
   return (
