@@ -6,15 +6,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { getTranslations } from "next-intl/server";
 
-export default function SignupPage() {
+export default async function SignupPage() {
+  const t = await getTranslations("SignUp");
+
   return (
     <Card className="max-w-md w-full h-max m-auto">
       <CardHeader className="text-center">
         <CardTitle className="text-3xl font-bold tracking-tight">
-          Create an account
+          {t("title")}
         </CardTitle>
-        <CardDescription>Sign up to get started with Kochy.</CardDescription>
+        <CardDescription>{t("description")}</CardDescription>
       </CardHeader>
       <CardContent>
         <SignupForm />

@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
+import { useTranslations } from "next-intl";
 import Form from "next/form";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -10,6 +11,8 @@ import { Input } from "../ui/input";
 
 export function SignupForm() {
   const router = useRouter();
+  const t = useTranslations("SignUp");
+
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -20,7 +23,7 @@ export function SignupForm() {
     const password = String(formData.get("password"));
     const confirmPassword = String(formData.get("confirmPassword"));
     if (password !== confirmPassword) {
-      setError("Passwords do not match.");
+      setError(t("passwordsDoNotMatch"));
       setIsSubmitting(false);
       return;
     }
@@ -34,19 +37,12 @@ export function SignupForm() {
       });
 
       if (result.error) {
-        setError(
-          result.error.message ??
-            "Unable to create your account. Please try again.",
-        );
+        setError(result.error.message ?? t("error"));
         setIsSubmitting(false);
         return;
       }
     } catch (error) {
-      setError(
-        error instanceof Error
-          ? error.message
-          : "Unable to create your account. Please try again.",
-      );
+      setError(error instanceof Error ? error.message : t("error"));
       setIsSubmitting(false);
       return;
     }
@@ -59,7 +55,7 @@ export function SignupForm() {
     <Form action={handleSubmit}>
       <FieldGroup>
         <Field>
-          <FieldLabel htmlFor="name">Display name</FieldLabel>
+          <FieldLabel htmlFor="name">{t("displayName")}</FieldLabel>
           <Input
             required
             autoComplete="name"
@@ -69,7 +65,7 @@ export function SignupForm() {
           />
         </Field>
         <Field>
-          <FieldLabel htmlFor="email">Email</FieldLabel>
+          <FieldLabel htmlFor="email">{t("email")}</FieldLabel>
           <Input
             required
             autoComplete="email"
@@ -79,7 +75,7 @@ export function SignupForm() {
           />
         </Field>
         <Field>
-          <FieldLabel htmlFor="password">Password</FieldLabel>
+          <FieldLabel htmlFor="password">{t("password")}</FieldLabel>
           <Input
             required
             autoComplete="new-password"
@@ -89,7 +85,9 @@ export function SignupForm() {
           />
         </Field>
         <Field>
-          <FieldLabel htmlFor="confirmPassword">Confirm password</FieldLabel>
+          <FieldLabel htmlFor="confirmPassword">
+            {t("confirmPassword")}
+          </FieldLabel>
           <Input
             required
             id="confirmPassword"
@@ -99,7 +97,7 @@ export function SignupForm() {
         </Field>
         <Field>
           <Button disabled={isSubmitting} type="submit">
-            {isSubmitting ? "Creating account..." : "Sign up"}
+            {isSubmitting ? t("creatingAccount") : t("signUp")}
           </Button>
           {error && (
             <FieldDescription className="text-destructive">
@@ -108,13 +106,13 @@ export function SignupForm() {
           )}
         </Field>
         <p className="text-center text-sm text-muted-foreground">
-          Already have an account?{" "}
+          {t("haveAccount")}{" "}
           <Button
             variant="link"
             className="px-0"
             onClick={() => router.push("/login")}
           >
-            Sign in
+            {t("signIn")}
           </Button>
         </p>
       </FieldGroup>

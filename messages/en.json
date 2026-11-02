@@ -10,5 +10,19 @@
     "signIn": "Sign in",
     "noAccount": "Don't have an account?",
     "signUp": "Sign up"
+  },
+  "SignUp": {
+    "title": "Create an account",
+    "description": "Sign up to get started with Kochy.",
+    "error": "Unable to sign up. Please try again.",
+    "displayName": "Display Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "creatingAccount": "Creating account...",
+    "signUp": "Sign up",
+    "haveAccount": "Already have an account?",
+    "signIn": "Sign in",
+    "passwordsDoNotMatch": "Passwords do not match."
   }
 }
