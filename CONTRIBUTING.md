@@ -70,6 +70,16 @@ Run `pnpm prisma:generate` after changing the Prisma schema. Use `pnpm prisma:mi
 - [next-intl](https://next-intl.dev/) for internationalization
 - [pnpm](https://pnpm.io/) for package management
 
+## Translations
+
+Translations are stored as JSON message catalogs in the [`messages/`](./messages/) directory. To edit an existing translation, update the corresponding locale file, such as [`messages/en.json`](./messages/en.json) or [`messages/hu.json`](./messages/hu.json). Keep the message keys and nesting identical across all catalogs; add or update the translated text without renaming keys.
+
+To add a language:
+
+1. Add its short locale code and display name to [`i18n/locales.ts`](./i18n/locales.ts).
+2. Create a message catalog in `messages/<locale>.json`.
+3. Copy the structure of [`messages/en.json`](./messages/en.json) and translate every message, keeping all keys unchanged.
+
 ## Contribution guidelines
 
 - Keep changes focused and consistent with the existing codebase.
