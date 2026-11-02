@@ -1,3 +1,5 @@
+import Sidebar from "@/components/sidebar/sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
@@ -11,5 +13,13 @@ export default async function ProtectedLayout({ children }: LayoutProps<"/">) {
     redirect("/login");
   }
 
-  return children;
+  return (
+    <SidebarProvider>
+      <Sidebar />
+      <main>
+        <SidebarTrigger />
+        {children}
+      </main>
+    </SidebarProvider>
+  );
 }

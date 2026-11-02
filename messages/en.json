@@ -24,5 +24,8 @@
     "haveAccount": "Already have an account?",
     "signIn": "Sign in",
     "passwordsDoNotMatch": "Passwords do not match."
+  },
+  "Sidebar": {
+    "logOut": "Log out"
   }
 }
