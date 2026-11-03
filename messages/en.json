@@ -29,5 +29,10 @@
     "logOut": "Log out",
     "language": "Language",
     "languageAuto": "Auto"
+  },
+  "ThemeSwitch": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
   }
 }

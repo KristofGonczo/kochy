@@ -29,5 +29,10 @@
     "logOut": "Kijelentkezés",
     "language": "Nyelv",
     "languageAuto": "Automatikus"
+  },
+  "ThemeSwitch": {
+    "light": "Világos",
+    "dark": "Sötét",
+    "system": "Rendszer"
   }
 }

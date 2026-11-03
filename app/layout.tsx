@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/components/provider/theme-provider";
 import { Spinner } from "@/components/ui/spinner";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      suppressHydrationWarning
       className={cn(
         "h-full",
         "antialiased",
@@ -40,7 +41,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Suspense
           fallback={<Spinner className="size-16 m-auto text-primary" />}
         >
-          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          </ThemeProvider>
         </Suspense>
       </body>
     </html>

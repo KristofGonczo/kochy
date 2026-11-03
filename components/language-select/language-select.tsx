@@ -56,7 +56,7 @@ export function LanguageSelect({
     >
       <SelectTrigger
         render={renderTrigger}
-        className={open ? "w-full" : "w-full [&>svg:last-child]:hidden"}
+        className={open ? "w-full" : "[&>svg:last-child]:hidden"}
         aria-label={t("language")}
       >
         <Languages />
