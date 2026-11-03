@@ -1,10 +1,12 @@
-import { prisma } from "@/lib/prisma"; // your prisma client instance
+import * as schema from "@/db/auth-schema";
+import { db } from "@/db/drizzle";
+import { drizzleAdapter } from "@better-auth/drizzle-adapter/relations-v2";
 import { betterAuth } from "better-auth";
-import { prismaAdapter } from "better-auth/adapters/prisma";
 
 export const auth = betterAuth({
-  database: prismaAdapter(prisma, {
-    provider: "postgresql", // or "mysql", "sqlite", ...etc
+  database: drizzleAdapter(db, {
+    provider: "pg",
+    schema,
   }),
   advanced: {
     database: {
