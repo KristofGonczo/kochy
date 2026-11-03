@@ -6,7 +6,7 @@ Thank you for your interest in contributing to kochy. Contributions, bug reports
 
 ### Prerequisites
 
-- Node.js
+- Node.js 26+
 - pnpm 12+
 
 Install dependencies from the repository root:
@@ -45,15 +45,15 @@ pnpm build
 pnpm start
 ```
 
-Prisma commands:
+Drizzle commands:
 
 ```bash
-pnpm prisma:generate
-pnpm prisma:migrate
-pnpm prisma:studio
+npx drizzle-kit generate
+npx exec drizzle-kit migrate
+npx exec drizzle-kit studio
 ```
 
-Run `pnpm prisma:generate` after changing the Prisma schema. Use `pnpm prisma:migrate` to create and apply a development migration, and `pnpm prisma:studio` to inspect the local database in Prisma Studio.
+The Drizzle schema is defined in [`db/schema.ts`](./db/schema.ts), with configuration in [`drizzle.config.ts`](./drizzle.config.ts). Run `pnpm exec drizzle-kit generate` after changing the schema to create a migration, then run `pnpm exec drizzle-kit migrate` to apply pending migrations. Use `pnpm exec drizzle-kit studio` to inspect the local database in Drizzle Studio.
 
 ## Tech stack
 
@@ -65,7 +65,7 @@ Run `pnpm prisma:generate` after changing the Prisma schema. Use `pnpm prisma:mi
 - [Base UI](https://base-ui.com/)
 - [Lucide](https://lucide.dev/) icons
 - [PostgreSQL](https://www.postgresql.org/) for local development
-- [Prisma](https://www.prisma.io/) as the ORM
+- [Drizzle ORM](https://orm.drizzle.team/) for database access and migrations
 - [Better Auth](https://www.better-auth.com/) for authentication
 - [next-intl](https://next-intl.dev/) for internationalization
 - [pnpm](https://pnpm.io/) for package management
