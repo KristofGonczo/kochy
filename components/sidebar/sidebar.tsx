@@ -1,5 +1,6 @@
 "use client";
 
+import { LanguageSelect } from "@/components/language-select/language-select";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,8 +24,8 @@ import { authClient } from "@/lib/auth-client"; // import the auth client
 import { LogOut } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { redirect } from "next/navigation";
+import { ThemeSwitch } from "../theme-switch/theme-switch";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { LanguageSelect } from "./language-select";
 
 const Sidebar = ({ initialLocale }: { initialLocale?: Locale }) => {
   const t = useTranslations("Sidebar");
@@ -84,6 +85,9 @@ const Sidebar = ({ initialLocale }: { initialLocale?: Locale }) => {
               initialLocale={initialLocale}
               renderTrigger={<SidebarMenuButton />}
             />
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <ThemeSwitch renderTrigger={<SidebarMenuButton />} />
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
