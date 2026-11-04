@@ -15,4 +15,5 @@ Add any other context or screenshots about the feature request here.
 
 **Acceptance criteria**
 A list of things that need to be true for the task to be considered done.
-- [ ]
+- [ ] Tests written
+- [ ] ...
