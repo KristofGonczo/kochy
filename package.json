@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "lint:fix": "eslint --fix"
+    "lint:fix": "eslint --fix",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
@@ -36,6 +37,7 @@
     "@types/pg": "^8.23.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cypress": "^16.2.1",
     "drizzle-kit": "1.0.0-rc.5",
     "eslint": "^10.14.0",
     "eslint-config-next": "16.4.3",
