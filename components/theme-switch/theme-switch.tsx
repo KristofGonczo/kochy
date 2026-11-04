@@ -12,16 +12,16 @@ import { Moon, Sun, SunMoon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
-import { useSidebar } from "../ui/sidebar";
 
 export function ThemeSwitch({
   renderTrigger,
+  open = true,
 }: {
   renderTrigger?: React.ReactElement;
+  open?: boolean;
 }) {
   const t = useTranslations("ThemeSwitch");
   const { setTheme, theme } = useTheme();
-  const { open } = useSidebar();
 
   // This is a workaround for the fact that next-themes does not support server-side rendering.
   const mounted = useSyncExternalStore(
