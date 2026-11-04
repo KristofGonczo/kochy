@@ -2,9 +2,8 @@
 name: Bug report
 about: Create a report to help us improve
 title: "[BUG] "
-labels: type/bug
+labels: type/bug, type/feature
 assignees: ''
-type: Bug
 
 ---
 
