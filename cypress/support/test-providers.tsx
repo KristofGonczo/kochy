@@ -1,7 +1,11 @@
+import "@/app/globals.css";
 import { ThemeProvider } from "@/components/provider/theme-provider";
 import { cn } from "@/lib/utils";
-import "@/app/globals.css";
 import { NextIntlClientProvider } from "next-intl";
+import {
+  AppRouterContext,
+  type AppRouterInstance,
+} from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import type { ReactNode } from "react";
 import messages from "../../messages/en.json";
@@ -17,6 +21,16 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const testRouter: AppRouterInstance = {
+  back: () => {},
+  forward: () => {},
+  refresh: () => {},
+  push: () => {},
+  replace: () => {},
+  prefetch: () => {},
+  bfcacheId: "cypress",
+};
 
 type TestProvidersProps = {
   children?: ReactNode;
@@ -41,7 +55,9 @@ export default function TestProviders({ children }: TestProvidersProps) {
         disableTransitionOnChange
       >
         <NextIntlClientProvider locale="en" messages={messages}>
-          {children}
+          <AppRouterContext.Provider value={testRouter}>
+            {children}
+          </AppRouterContext.Provider>
         </NextIntlClientProvider>
       </ThemeProvider>
     </div>
