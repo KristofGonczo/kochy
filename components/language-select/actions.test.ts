@@ -3,25 +3,25 @@ import { persistLocaleCookie } from "./actions";
 describe("persistLocaleCookie", () => {
   it("deletes the locale cookie when automatic locale selection is used", () => {
     const cookieStore = {
-      delete: cy.stub(),
-      set: cy.stub(),
+      delete: jest.fn(),
+      set: jest.fn(),
     };
 
     persistLocaleCookie(cookieStore, "auto");
 
-    cy.wrap(cookieStore.delete).should("have.been.calledOnceWith", "locale");
-    cy.wrap(cookieStore.set).should("not.have.been.called");
+    expect(cookieStore.delete).toHaveBeenCalledWith("locale");
+    expect(cookieStore.set).not.toHaveBeenCalled();
   });
 
   it("sets the locale cookie for a supported locale", () => {
     const cookieStore = {
-      delete: cy.stub(),
-      set: cy.stub(),
+      delete: jest.fn(),
+      set: jest.fn(),
     };
 
     persistLocaleCookie(cookieStore, "en");
 
-    cy.wrap(cookieStore.set).should("have.been.calledOnceWith", "locale", "en");
-    cy.wrap(cookieStore.delete).should("not.have.been.called");
+    expect(cookieStore.set).toHaveBeenCalledWith("locale", "en");
+    expect(cookieStore.delete).not.toHaveBeenCalled();
   });
 });
