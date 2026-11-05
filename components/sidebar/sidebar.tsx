@@ -87,7 +87,7 @@ const Sidebar = ({ initialLocale }: { initialLocale?: Locale }) => {
             />
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <ThemeSwitch open={open} renderTrigger={<SidebarMenuButton />} />
+            <ThemeSwitch compact={!open} renderTrigger={<SidebarMenuButton />} />
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>

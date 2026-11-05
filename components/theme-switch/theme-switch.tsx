@@ -15,10 +15,10 @@ import { useSyncExternalStore } from "react";
 
 export function ThemeSwitch({
   renderTrigger,
-  open = true,
+  compact = false,
 }: {
   renderTrigger?: React.ReactElement;
-  open?: boolean;
+  compact?: boolean;
 }) {
   const t = useTranslations("ThemeSwitch");
   const { setTheme, theme } = useTheme();
@@ -43,12 +43,12 @@ export function ThemeSwitch({
     >
       <SelectTrigger
         render={renderTrigger}
-        className={open ? "w-full" : "[&>svg:last-child]:hidden"}
+        className={compact ? "[&>svg:last-child]:hidden" : "w-full"}
       >
         {selectedTheme === "light" && <Sun />}
         {selectedTheme === "dark" && <Moon />}
         {selectedTheme === "system" && <SunMoon />}
-        {open && <SelectValue />}
+        {!compact && <SelectValue />}
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
