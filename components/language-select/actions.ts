@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import { AUTO_LOCALE, LanguageSelectValue } from "./language-select";
 
-export async function setLocale(locale: LanguageSelectValue) {
+export async function persistLocale(locale: LanguageSelectValue) {
   const cookieStore = await cookies();
 
   if (locale === AUTO_LOCALE) {
