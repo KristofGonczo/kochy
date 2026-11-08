@@ -41,9 +41,17 @@ Useful commands:
 
 ```bash
 pnpm lint
+pnpm test
+pnpm test -- <path>
 pnpm build
 pnpm start
 ```
+
+### Testing
+
+Tests use Jest with Testing Library for unit and React component coverage. Add tests alongside the code they cover, follow the existing test patterns, and run the focused Jest test command while developing.
+
+### Database
 
 Drizzle commands:
 
@@ -84,5 +92,6 @@ To add a language:
 
 - Keep changes focused and consistent with the existing codebase.
 - Run `pnpm lint` before opening a pull request.
+- Run `pnpm test` before opening a pull request.
 - Run `pnpm build` when changes may affect the production build.
 - Include a clear description of the problem and solution in pull requests.
