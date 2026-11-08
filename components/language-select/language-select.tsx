@@ -14,7 +14,7 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { ReactElement, useState } from "react";
 import { useSidebar } from "../ui/sidebar";
-import { setLocale } from "./actions";
+import { persistLocale } from "./actions";
 
 export const AUTO_LOCALE = "auto";
 export type LanguageSelectValue = Locale | typeof AUTO_LOCALE;
@@ -22,9 +22,11 @@ export type LanguageSelectValue = Locale | typeof AUTO_LOCALE;
 export function LanguageSelect({
   initialLocale,
   renderTrigger,
+  setLocaleAction = persistLocale,
 }: {
   initialLocale?: Locale;
   renderTrigger?: ReactElement;
+  setLocaleAction?: typeof persistLocale;
 }) {
   const t = useTranslations("Sidebar");
   const router = useRouter();
@@ -35,7 +37,7 @@ export function LanguageSelect({
 
   async function handleValueChange(nextValue: LanguageSelectValue | null) {
     if (!nextValue) return;
-    await setLocale(nextValue);
+    await setLocaleAction(nextValue);
     setValue(nextValue);
     router.refresh();
   }

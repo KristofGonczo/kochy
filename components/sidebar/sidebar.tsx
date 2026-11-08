@@ -23,7 +23,7 @@ import type { Locale } from "@/i18n/locales";
 import { authClient } from "@/lib/auth-client"; // import the auth client
 import { LogOut } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { ThemeSwitch } from "../theme-switch/theme-switch";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
@@ -31,6 +31,7 @@ const Sidebar = ({ initialLocale }: { initialLocale?: Locale }) => {
   const t = useTranslations("Sidebar");
   const session = authClient.useSession();
   const { open } = useSidebar();
+  const router = useRouter();
 
   return (
     <ShadCnSidebar collapsible="icon">
@@ -61,7 +62,7 @@ const Sidebar = ({ initialLocale }: { initialLocale?: Locale }) => {
                     variant="destructive"
                     onClick={() => {
                       authClient.signOut().then(() => {
-                        redirect("/login");
+                        router.push("/login");
                       });
                     }}
                   >
@@ -87,7 +88,7 @@ const Sidebar = ({ initialLocale }: { initialLocale?: Locale }) => {
             />
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <ThemeSwitch renderTrigger={<SidebarMenuButton />} />
+            <ThemeSwitch compact={!open} renderTrigger={<SidebarMenuButton />} />
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>

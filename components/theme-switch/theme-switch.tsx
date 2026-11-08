@@ -12,16 +12,16 @@ import { Moon, Sun, SunMoon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
-import { useSidebar } from "../ui/sidebar";
 
 export function ThemeSwitch({
   renderTrigger,
+  compact = false,
 }: {
   renderTrigger?: React.ReactElement;
+  compact?: boolean;
 }) {
   const t = useTranslations("ThemeSwitch");
   const { setTheme, theme } = useTheme();
-  const { open } = useSidebar();
 
   // This is a workaround for the fact that next-themes does not support server-side rendering.
   const mounted = useSyncExternalStore(
@@ -43,12 +43,12 @@ export function ThemeSwitch({
     >
       <SelectTrigger
         render={renderTrigger}
-        className={open ? "w-full" : "[&>svg:last-child]:hidden"}
+        className={compact ? "[&>svg:last-child]:hidden" : "w-full"}
       >
         {selectedTheme === "light" && <Sun />}
         {selectedTheme === "dark" && <Moon />}
         {selectedTheme === "system" && <SunMoon />}
-        {open && <SelectValue />}
+        {!compact && <SelectValue />}
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
