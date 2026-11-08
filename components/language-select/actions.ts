@@ -8,7 +8,7 @@ type LocaleCookieStore = Pick<
   "delete" | "set"
 >;
 
-export function persistLocaleCookie(
+export async function persistLocaleCookie(
   cookieStore: LocaleCookieStore,
   locale: LanguageSelectValue,
 ) {
