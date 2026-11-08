@@ -28,7 +28,8 @@
   "Sidebar": {
     "logOut": "Kijelentkezés",
     "language": "Nyelv",
-    "languageAuto": "Automatikus"
+    "languageAuto": "Automatikus",
+    "trips": "Utazások"
   },
   "ThemeSwitch": {
     "light": "Világos",

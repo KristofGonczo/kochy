@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/sidebar";
 import type { Locale } from "@/i18n/locales";
 import { authClient } from "@/lib/auth-client"; // import the auth client
-import { LogOut } from "lucide-react";
+import { LogOut, Plane } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { ThemeSwitch } from "../theme-switch/theme-switch";
@@ -81,7 +81,14 @@ const Sidebar = ({ initialLocale }: { initialLocale?: Locale }) => {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup></SidebarGroup>
+        <SidebarGroup>
+          <SidebarMenu>
+            <SidebarMenuButton render={<a href={"/trips"} />}>
+              <Plane />
+              {open && <span>{t("trips")}</span>}
+            </SidebarMenuButton>
+          </SidebarMenu>
+        </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>

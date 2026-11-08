@@ -28,7 +28,8 @@
   "Sidebar": {
     "logOut": "Log out",
     "language": "Language",
-    "languageAuto": "Auto"
+    "languageAuto": "Auto",
+    "trips": "Trips"
   },
   "ThemeSwitch": {
     "light": "Light",
