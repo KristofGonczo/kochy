@@ -1,6 +1,6 @@
 import { fireEvent, screen, waitFor, within } from "@testing-library/react";
 import { SidebarProvider } from "@/components/ui/sidebar";
-import { createTestRouter, renderWithProviders } from "@/test-utils";
+import { createTestRouter, renderWithProviders } from "@/jest.setup";
 import { authClient } from "@/lib/auth-client";
 import Sidebar from "@/components/sidebar/sidebar";
 

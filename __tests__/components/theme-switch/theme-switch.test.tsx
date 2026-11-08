@@ -1,6 +1,6 @@
 import { fireEvent, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { renderWithProviders } from "@/test-utils";
+import { renderWithProviders } from "@/jest.setup";
 import { ThemeSwitch } from "@/components/theme-switch/theme-switch";
 
 describe("ThemeSwitch", () => {

@@ -2,7 +2,7 @@ import { fireEvent, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { AppRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type { ReactElement } from "react";
-import { renderWithProviders, createTestRouter } from "@/test-utils";
+import { renderWithProviders, createTestRouter } from "@/jest.setup";
 import { LanguageSelect, type LanguageSelectValue } from "@/components/language-select/language-select";
 import { SidebarProvider } from "@/components/ui/sidebar";
 

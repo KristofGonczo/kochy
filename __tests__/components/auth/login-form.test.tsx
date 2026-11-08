@@ -1,7 +1,7 @@
 import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { authClient } from "@/lib/auth-client";
-import { createTestRouter, renderWithProviders } from "@/test-utils";
+import { createTestRouter, renderWithProviders } from "@/jest.setup";
 import { LoginForm } from "@/components/auth/login-form";
 
 Object.defineProperty(window, "PointerEvent", {
