@@ -37,24 +37,29 @@ const Sidebar = ({ initialLocale }: { initialLocale?: Locale }) => {
     <ShadCnSidebar collapsible="icon">
       <SidebarHeader>
         <SidebarMenu>
-          <DropdownMenu>
-            <SidebarMenuItem>
+          <SidebarMenuItem>
+            <DropdownMenu>
               <DropdownMenuTrigger
                 render={
-                  <SidebarMenuButton className="sidebar-avatar-trigger group-data-[collapsible=icon]:[&.sidebar-avatar-trigger]:p-0!" />
+                  <SidebarMenuButton
+                    size="lg"
+                    className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+                  />
                 }
               >
-                <Avatar>
-                  <AvatarImage />
-                  <AvatarFallback>
-                    {session.data?.user.name.charAt(0)}
-                  </AvatarFallback>
-                </Avatar>
-                {open && (
-                  <span className="font-semibold text-lg">
+                <div className="flex aspect-square size-8 items-center justify-center rounded-lg text-sidebar-primary-foreground">
+                  <Avatar>
+                    <AvatarImage />
+                    <AvatarFallback>
+                      {session.data?.user.name.charAt(0)}
+                    </AvatarFallback>
+                  </Avatar>
+                </div>
+                <div className="grid flex-1 text-left text-sm leading-tight">
+                  <span className="truncate font-medium">
                     {session.data?.user.name}
                   </span>
-                )}
+                </div>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
                 <DropdownMenuGroup>
@@ -71,13 +76,12 @@ const Sidebar = ({ initialLocale }: { initialLocale?: Locale }) => {
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
               </DropdownMenuContent>
-            </SidebarMenuItem>
-          </DropdownMenu>
+            </DropdownMenu>
+          </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup />
-        <SidebarGroup />
+        <SidebarGroup></SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>
@@ -88,7 +92,10 @@ const Sidebar = ({ initialLocale }: { initialLocale?: Locale }) => {
             />
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <ThemeSwitch compact={!open} renderTrigger={<SidebarMenuButton />} />
+            <ThemeSwitch
+              compact={!open}
+              renderTrigger={<SidebarMenuButton />}
+            />
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
