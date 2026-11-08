@@ -13,3 +13,9 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Use shadcn components for UI work. Reuse an existing component before creating a new one.
 - When a needed component is missing, install it with the shadcn CLI (for example, `pnpm dlx shadcn@latest add <component>`).
 - Update shadcn components with the shadcn CLI rather than replacing their generated implementation manually.
+
+## Testing
+
+- Use Jest for unit and component tests.
+- Use the existing Testing Library utilities and repository test helpers for React components.
+- Run focused tests with `pnpm test -- <path>`; run the full suite with `pnpm test`.
