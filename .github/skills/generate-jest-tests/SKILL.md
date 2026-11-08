@@ -1,10 +1,9 @@
 ---
+name: generate-jest-tests
 description: "Generate and write Jest tests for user-provided files or features"
-name: "Generate Jest Tests"
+disable-model-invocation: true
 argument-hint: "Describe the files or feature to cover"
-agent: "agent"
 ---
-
 Generate and write Jest tests for the files or feature described by the user.
 
 1. Inspect the requested implementation and nearby tests before editing.
