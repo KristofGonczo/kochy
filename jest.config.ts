@@ -6,12 +6,17 @@ const createJestConfig = nextJest({
 });
 
 const config: Config = {
-  coverageProvider: "v8",
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/$1",
   },
+  collectCoverage: true,
+  collectCoverageFrom: [
+    "<rootDir>/{lib,hooks,components,app}/**/*.{js,jsx,ts,tsx}",
+    "!<rootDir>/components/ui/**",
+  ],
+  coverageReporters: ["lcov", "text-summary", "json-summary"],
 };
 
 const nextJestConfig = createJestConfig(config);
