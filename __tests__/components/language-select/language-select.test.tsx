@@ -3,8 +3,8 @@ import userEvent from "@testing-library/user-event";
 import { AppRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type { ReactElement } from "react";
 import { renderWithProviders, createTestRouter } from "@/test-utils";
-import { SidebarProvider } from "../ui/sidebar";
-import { LanguageSelect, type LanguageSelectValue } from "./language-select";
+import { LanguageSelect, type LanguageSelectValue } from "@/components/language-select/language-select";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 function LanguageSelectHarness({
   initialLocale,

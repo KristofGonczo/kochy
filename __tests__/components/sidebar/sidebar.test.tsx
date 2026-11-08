@@ -2,7 +2,7 @@ import { fireEvent, screen, waitFor, within } from "@testing-library/react";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { createTestRouter, renderWithProviders } from "@/test-utils";
 import { authClient } from "@/lib/auth-client";
-import Sidebar from "./sidebar";
+import Sidebar from "@/components/sidebar/sidebar";
 
 jest.mock("@/lib/auth-client", () => ({
   authClient: {

@@ -1,4 +1,4 @@
-import { persistLocaleCookie } from "./actions";
+import { persistLocaleCookie } from "@/components/language-select/actions";
 
 describe("persistLocaleCookie", () => {
   it("deletes the locale cookie when automatic locale selection is used", () => {

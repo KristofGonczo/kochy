@@ -2,7 +2,7 @@ import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { authClient } from "@/lib/auth-client";
 import { createTestRouter, renderWithProviders } from "@/test-utils";
-import { SignupForm } from "./signup-form";
+import { SignupForm } from "@/components/auth/signup-form";
 
 Object.defineProperty(window, "PointerEvent", {
   writable: true,
