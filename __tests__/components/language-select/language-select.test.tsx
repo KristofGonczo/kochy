@@ -41,7 +41,7 @@ describe("LanguageSelect", () => {
       />,
     );
 
-    const trigger = screen.getByRole("combobox", { name: "Language" });
+    const trigger = screen.getByRole("button", { name: "Language" });
     expect(trigger).toHaveTextContent("Auto");
     expect(trigger.querySelector(".lucide-languages")).toBeInTheDocument();
   });
@@ -55,18 +55,18 @@ describe("LanguageSelect", () => {
       />,
     );
 
-    const trigger = screen.getByRole("combobox", { name: "Language" });
+    const trigger = screen.getByRole("button", { name: "Language" });
     expect(trigger).toHaveTextContent("Magyar");
     fireEvent.keyDown(trigger, { key: "ArrowDown" });
 
-    const listbox = screen.getByRole("listbox");
-    expect(within(listbox).getAllByRole("option")).toHaveLength(3);
-    expect(listbox).toHaveTextContent("Auto");
-    expect(listbox).toHaveTextContent("English");
-    expect(listbox).toHaveTextContent("Magyar");
+    const menu = screen.getByRole("menu");
+    expect(within(menu).getAllByRole("menuitem")).toHaveLength(3);
+    expect(menu).toHaveTextContent("Auto");
+    expect(menu).toHaveTextContent("English");
+    expect(menu).toHaveTextContent("Magyar");
   });
 
-  it("hides the selected locale when the sidebar is collapsed", () => {
+  it("renders the language trigger when the sidebar is collapsed", () => {
     renderWithProviders(
       <LanguageSelectHarness
         initialLocale="en"
@@ -76,8 +76,8 @@ describe("LanguageSelect", () => {
       />,
     );
 
-    const trigger = screen.getByRole("combobox", { name: "Language" });
-    expect(trigger).not.toHaveTextContent("English");
+    const trigger = screen.getByRole("button", { name: "Language" });
+    expect(trigger).toHaveTextContent("English");
     expect(trigger.querySelector(".lucide-languages")).toBeInTheDocument();
   });
 
@@ -92,16 +92,16 @@ describe("LanguageSelect", () => {
       />,
     );
 
-    fireEvent.keyDown(screen.getByRole("combobox", { name: "Language" }), {
+    fireEvent.keyDown(screen.getByRole("button", { name: "Language" }), {
       key: "ArrowDown",
     });
-    await user.click(screen.getByRole("option", { name: "Magyar" }));
+    await user.click(screen.getByRole("menuitem", { name: "Magyar" }));
 
     await waitFor(() => {
       expect(setLocaleAction).toHaveBeenCalledWith("hu");
       expect(router.refresh).toHaveBeenCalledTimes(1);
     });
-    expect(screen.getByRole("combobox", { name: "Language" })).toHaveTextContent(
+    expect(screen.getByRole("button", { name: "Language" })).toHaveTextContent(
       "Magyar",
     );
   });
@@ -117,9 +117,9 @@ describe("LanguageSelect", () => {
     );
 
     const trigger = screen.getByTestId("custom-trigger");
-    expect(trigger).toHaveAttribute("aria-haspopup", "listbox");
+    expect(trigger).toHaveAttribute("aria-haspopup", "menu");
     fireEvent.keyDown(trigger, { key: "ArrowDown" });
-    await user.click(screen.getByRole("option", { name: "English" }));
+    await user.click(screen.getByRole("menuitem", { name: "English" }));
 
     await waitFor(() => expect(trigger).toHaveTextContent("English"));
   });

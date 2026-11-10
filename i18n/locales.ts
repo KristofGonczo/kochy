@@ -14,3 +14,9 @@ export function getSupportedLocale(value?: string): Locale | undefined {
 
   return code && isSupportedLocale(code) ? code : undefined;
 }
+
+export function getSupportedLocaleName(value?: Locale): string | undefined {
+  return value
+    ? SUPPORTED_LOCALES.find((locale) => locale.code === value)?.name
+    : undefined;
+}

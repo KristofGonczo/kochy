@@ -81,10 +81,12 @@ describe("Sidebar", () => {
       '[data-slot="sidebar-footer"]',
     );
     expect(footer).not.toBeNull();
-    const triggers = within(footer as HTMLElement).getAllByRole("combobox");
-    expect(triggers).toHaveLength(2);
-    expect(triggers[0]).toHaveTextContent("English");
-    expect(triggers[1]).toHaveTextContent("System");
+    expect(
+      within(footer as HTMLElement).getByRole("button", { name: "Language" }),
+    ).toHaveTextContent("English");
+    expect(within(footer as HTMLElement).getByRole("combobox")).toHaveTextContent(
+      "System",
+    );
   });
 
   it("renders collapsed child controls", () => {
@@ -94,13 +96,11 @@ describe("Sidebar", () => {
       '[data-slot="sidebar-footer"]',
     );
     expect(footer).not.toBeNull();
-    const triggers = within(footer as HTMLElement).getAllByRole(
-      "combobox",
+    expect(
+      within(footer as HTMLElement).getByRole("button", { name: "Language" }),
+    ).toHaveTextContent("English");
+    expect(within(footer as HTMLElement).getByRole("combobox")).not.toHaveTextContent(
+      "System",
     );
-    expect(triggers).toHaveLength(2);
-    for (const trigger of triggers) {
-      expect(trigger).not.toHaveTextContent("English");
-      expect(trigger).not.toHaveTextContent("System");
-    }
   });
 });

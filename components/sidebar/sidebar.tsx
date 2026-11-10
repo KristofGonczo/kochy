@@ -95,7 +95,7 @@ const Sidebar = ({ initialLocale }: { initialLocale?: Locale }) => {
           <SidebarMenuItem>
             <LanguageSelect
               initialLocale={initialLocale}
-              renderTrigger={<SidebarMenuButton />}
+              renderTrigger={<SidebarMenuButton className="rounded-full" />}
             />
           </SidebarMenuItem>
           <SidebarMenuItem>
