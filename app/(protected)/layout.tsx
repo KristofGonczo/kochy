@@ -1,5 +1,5 @@
 import Sidebar from "@/components/sidebar/sidebar";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { getSupportedLocale } from "@/i18n/locales";
 import { auth } from "@/lib/auth";
 import { cookies, headers } from "next/headers";
@@ -20,10 +20,7 @@ export default async function ProtectedLayout({ children }: LayoutProps<"/">) {
   return (
     <SidebarProvider defaultOpen={sidebarState !== "false"}>
       <Sidebar initialLocale={locale} />
-      <main>
-        <SidebarTrigger />
-        {children}
-      </main>
+      <main className="w-full md:w-md lg:w-3xl mx-auto">{children}</main>
     </SidebarProvider>
   );
 }
