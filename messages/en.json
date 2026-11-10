@@ -32,6 +32,7 @@
     "trips": "Trips"
   },
   "ThemeSwitch": {
+    "theme": "Theme",
     "light": "Light",
     "dark": "Dark",
     "system": "System"

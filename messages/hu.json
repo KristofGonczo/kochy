@@ -32,6 +32,7 @@
     "trips": "Utazások"
   },
   "ThemeSwitch": {
+    "theme": "Téma",
     "light": "Világos",
     "dark": "Sötét",
     "system": "Rendszer"

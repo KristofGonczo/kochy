@@ -100,8 +100,7 @@ const Sidebar = ({ initialLocale }: { initialLocale?: Locale }) => {
           </SidebarMenuItem>
           <SidebarMenuItem>
             <ThemeSwitch
-              compact={!open}
-              renderTrigger={<SidebarMenuButton />}
+              renderTrigger={<SidebarMenuButton className="rounded-full" />}
             />
           </SidebarMenuItem>
         </SidebarMenu>

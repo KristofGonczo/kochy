@@ -84,9 +84,9 @@ describe("Sidebar", () => {
     expect(
       within(footer as HTMLElement).getByRole("button", { name: "Language" }),
     ).toHaveTextContent("English");
-    expect(within(footer as HTMLElement).getByRole("combobox")).toHaveTextContent(
-      "System",
-    );
+    expect(
+      within(footer as HTMLElement).getByRole("button", { name: "Theme" }),
+    ).toHaveTextContent("System");
   });
 
   it("renders collapsed child controls", () => {
@@ -99,8 +99,8 @@ describe("Sidebar", () => {
     expect(
       within(footer as HTMLElement).getByRole("button", { name: "Language" }),
     ).toHaveTextContent("English");
-    expect(within(footer as HTMLElement).getByRole("combobox")).not.toHaveTextContent(
-      "System",
-    );
+    expect(
+      within(footer as HTMLElement).getByRole("button", { name: "Theme" }),
+    ).toHaveTextContent("System");
   });
 });

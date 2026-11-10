@@ -1,21 +1,20 @@
 "use client";
 
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Moon, Sun, SunMoon } from "lucide-react";
+import { ChevronDown, Moon, Sun, SunMoon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
+import { Button } from "../ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 
 export function ThemeSwitch({
   renderTrigger,
-  compact = false,
 }: {
   renderTrigger?: React.ReactElement;
   compact?: boolean;
@@ -32,37 +31,42 @@ export function ThemeSwitch({
   const selectedTheme = mounted ? theme : undefined;
 
   return (
-    <Select
-      items={[
-        { value: "system", label: t("system") },
-        { value: "light", label: t("light") },
-        { value: "dark", label: t("dark") },
-      ]}
-      value={selectedTheme ?? ""}
-      onValueChange={(nextValue) => nextValue && setTheme(nextValue)}
-    >
-      <SelectTrigger
-        render={renderTrigger}
-        className={compact ? "[&>svg:last-child]:hidden" : "w-full"}
-      >
-        {selectedTheme === "light" && <Sun />}
-        {selectedTheme === "dark" && <Moon />}
-        {selectedTheme === "system" && <SunMoon />}
-        {!compact && <SelectValue />}
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          <SelectItem key={"light"} value={"light"}>
-            {t("light")}
-          </SelectItem>
-          <SelectItem key={"dark"} value={"dark"}>
-            {t("dark")}
-          </SelectItem>
-          <SelectItem key={"system"} value={"system"}>
-            {t("system")}
-          </SelectItem>
-        </SelectGroup>
-      </SelectContent>
-    </Select>
+    selectedTheme && (
+      <DropdownMenu>
+        <DropdownMenuTrigger
+          render={renderTrigger ?? <Button />}
+          aria-label={t("theme")}
+        >
+          <span className="relative -m-2 flex size-8 shrink-0 items-center justify-center">
+            {selectedTheme === "light" && <Sun />}
+            {selectedTheme === "dark" && <Moon />}
+            {selectedTheme === "system" && <SunMoon />}
+          </span>
+          <div className="flex-1">
+            <span className="truncate font-medium">
+              {t(selectedTheme as Parameters<typeof t>[0])}
+            </span>
+          </div>
+          <ChevronDown />
+        </DropdownMenuTrigger>
+        <DropdownMenuContent
+          className="min-w-56 rounded-lg"
+          align="end"
+          sideOffset={4}
+        >
+          <DropdownMenuGroup>
+            <DropdownMenuItem onClick={() => setTheme("light")}>
+              {t("light")}
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setTheme("dark")}>
+              {t("dark")}
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setTheme("system")}>
+              {t("system")}
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    )
   );
 }

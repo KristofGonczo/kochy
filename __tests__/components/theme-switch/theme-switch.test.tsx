@@ -11,7 +11,7 @@ describe("ThemeSwitch", () => {
   it("renders the system theme by default", () => {
     renderWithProviders(<ThemeSwitch />);
 
-    const trigger = screen.getByRole("combobox");
+    const trigger = screen.getByRole("button", { name: "Theme" });
     expect(trigger).toHaveAttribute("aria-expanded", "false");
     expect(trigger).toHaveTextContent("System");
     expect(trigger.querySelector(".lucide-sun-moon")).toBeInTheDocument();
@@ -20,13 +20,15 @@ describe("ThemeSwitch", () => {
   it("shows all translated theme options when opened", () => {
     renderWithProviders(<ThemeSwitch />);
 
-    fireEvent.keyDown(screen.getByRole("combobox"), { key: "ArrowDown" });
+    fireEvent.keyDown(screen.getByRole("button", { name: "Theme" }), {
+      key: "ArrowDown",
+    });
 
-    const listbox = screen.getByRole("listbox");
-    expect(screen.getAllByRole("option")).toHaveLength(3);
-    expect(listbox).toHaveTextContent("Light");
-    expect(listbox).toHaveTextContent("Dark");
-    expect(listbox).toHaveTextContent("System");
+    const menu = screen.getByRole("menu");
+    expect(screen.getAllByRole("menuitem")).toHaveLength(3);
+    expect(menu).toHaveTextContent("Light");
+    expect(menu).toHaveTextContent("Dark");
+    expect(menu).toHaveTextContent("System");
   });
 
   it("changes the selected theme and icon", async () => {
@@ -40,20 +42,22 @@ describe("ThemeSwitch", () => {
     ];
 
     for (const { label, icon } of themes) {
-      fireEvent.keyDown(screen.getByRole("combobox"), { key: "ArrowDown" });
-      await user.click(screen.getByRole("option", { name: label }));
+      fireEvent.keyDown(screen.getByRole("button", { name: "Theme" }), {
+        key: "ArrowDown",
+      });
+      await user.click(screen.getByRole("menuitem", { name: label }));
 
-      const trigger = screen.getByRole("combobox");
+      const trigger = screen.getByRole("button", { name: "Theme" });
       expect(trigger).toHaveTextContent(label);
       expect(trigger.querySelector(`.lucide-${icon}`)).toBeInTheDocument();
     }
   });
 
-  it("renders a compact trigger without the selected theme label", () => {
-    renderWithProviders(<ThemeSwitch compact />);
+  it("renders the selected theme in the default trigger", () => {
+    renderWithProviders(<ThemeSwitch />);
 
-    const trigger = screen.getByRole("combobox");
-    expect(trigger).not.toHaveTextContent("System");
+    const trigger = screen.getByRole("button", { name: "Theme" });
+    expect(trigger).toHaveTextContent("System");
     expect(trigger.querySelector(".lucide-sun-moon")).toBeInTheDocument();
   });
 
@@ -66,9 +70,9 @@ describe("ThemeSwitch", () => {
     );
 
     const trigger = screen.getByTestId("custom-trigger");
-    expect(trigger).toHaveAttribute("aria-haspopup", "listbox");
+    expect(trigger).toHaveAttribute("aria-haspopup", "menu");
     fireEvent.keyDown(trigger, { key: "ArrowDown" });
-    await user.click(screen.getByRole("option", { name: "Dark" }));
+    await user.click(screen.getByRole("menuitem", { name: "Dark" }));
 
     expect(trigger).toHaveTextContent("Dark");
     expect(trigger.querySelector(".lucide-moon")).toBeInTheDocument();
