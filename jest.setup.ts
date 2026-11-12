@@ -10,6 +10,14 @@ import type { ReactElement, ReactNode } from "react";
 import * as React from "react";
 import messages from "./messages/en.json";
 
+jest.mock("next-intl/server", () => ({
+  getTranslations: jest.fn(async (namespace: keyof typeof messages) => {
+    const namespaceMessages = messages[namespace] as Record<string, string>;
+
+    return (key: string) => namespaceMessages[key];
+  }),
+}));
+
 export function createTestRouter(
   overrides: Partial<AppRouterInstance> = {},
 ): AppRouterInstance {

@@ -36,5 +36,10 @@
     "light": "Világos",
     "dark": "Sötét",
     "system": "Rendszer"
+  },
+  "NoTrips": {
+    "noTripsYet": "Még nincs utazás",
+    "noTripsDescription": "Még nem hoztál létre utazást. Kezdd azzal, hogy létrehozod az első utazásodat.",
+    "createTrip": "Utazás létrehozása"
   }
 }
