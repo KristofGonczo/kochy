@@ -25,6 +25,20 @@ const t = initTRPC
     /**
      * @see https://trpc.io/docs/server/data-transformers
      */
+    errorFormatter: ({ shape }) => {
+      return {
+        message:
+          shape.data.code === "INTERNAL_SERVER_ERROR"
+            ? "Internal server error"
+            : shape.message,
+        code: shape.code,
+        data: {
+          code: shape.data.code,
+          httpStatus: shape.data.httpStatus,
+          path: shape.data.path,
+        },
+      };
+    },
     // transformer: superjson,
   });
 
