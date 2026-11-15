@@ -1,6 +1,7 @@
 import { ThemeProvider } from "@/components/provider/theme-provider";
 import { Spinner } from "@/components/ui/spinner";
 import { cn } from "@/lib/utils";
+import { TRPCReactProvider } from "@/trpc/client";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
@@ -47,7 +48,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             enableSystem
             disableTransitionOnChange
           >
-            <NextIntlClientProvider>{children}</NextIntlClientProvider>
+            <NextIntlClientProvider>
+              <TRPCReactProvider>{children}</TRPCReactProvider>
+            </NextIntlClientProvider>
           </ThemeProvider>
         </Suspense>
       </body>
