@@ -74,6 +74,7 @@ The Drizzle schema is defined in [`db/schema.ts`](./db/schema.ts), with configur
 - [Lucide](https://lucide.dev/) icons
 - [PostgreSQL](https://www.postgresql.org/) for local development
 - [Drizzle ORM](https://orm.drizzle.team/) for database access and migrations
+- [tRPC](https://trpc.io/) for type-safe API endpoints
 - [Better Auth](https://www.better-auth.com/) for authentication
 - [next-intl](https://next-intl.dev/) for internationalization
 - [pnpm](https://pnpm.io/) for package management
