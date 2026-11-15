@@ -1,4 +1,4 @@
-import NoTrips from "@/components/no-trips/no-trips";
+import NoTrips from "@/components/pages/trips/no-trips/no-trips";
 import { renderWithProviders } from "@/jest.setup";
 import messages from "@/messages/en.json";
 import { screen } from "@testing-library/react";
