@@ -1,3 +1,4 @@
+import { auth } from "@/lib/auth";
 import { initTRPC } from "@trpc/server";
 
 /**
@@ -7,7 +8,11 @@ import { initTRPC } from "@trpc/server";
  */
 export const createTRPCContext = async (opts: { headers: Headers }) => {
   // const user = await auth(opts.headers);
-  return { userId: "user_123" };
+
+  const session = await auth.api.getSession({
+    headers: opts.headers,
+  });
+  return { user: session?.user };
 };
 
 // Avoid exporting the entire t-object
