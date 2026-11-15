@@ -14,6 +14,10 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - When a needed component is missing, install it with the shadcn CLI (for example, `pnpm dlx shadcn@latest add <component>`).
 - Update shadcn components with the shadcn CLI rather than replacing their generated implementation manually.
 
+## API Endpoints
+
+- Use tRPC for API endpoints. Add procedures to the routers in `trpc/routers/` instead of creating separate REST endpoints.
+
 ## Testing
 
 - Use Jest for unit and component tests.
