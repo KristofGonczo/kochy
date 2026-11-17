@@ -123,8 +123,8 @@ const NewTripDialog = () => {
               />
             </Field>
             {createTrip.isError && (
-              <p className="text-sm text-destructive" role="alert">
-                {t(createTrip.error.message as Parameters<typeof t>[0])}
+              <p className="text-sm text-destructive">
+                {createTrip.error.message}
               </p>
             )}
             <DialogFooter>

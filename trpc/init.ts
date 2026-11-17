@@ -1,5 +1,6 @@
 import { auth } from "@/lib/auth";
 import { initTRPC, TRPCError } from "@trpc/server";
+import { getTranslations } from "next-intl/server";
 import { getErrorMessage } from "./util";
 
 /**
@@ -13,7 +14,8 @@ export const createTRPCContext = async (opts: { headers: Headers }) => {
   const session = await auth.api.getSession({
     headers: opts.headers,
   });
-  return { user: session?.user };
+  const t = await getTranslations("Backend");
+  return { user: session?.user, t };
 };
 
 // Avoid exporting the entire t-object
@@ -26,9 +28,9 @@ const t = initTRPC
     /**
      * @see https://trpc.io/docs/server/data-transformers
      */
-    errorFormatter: ({ shape }) => {
+    errorFormatter: ({ shape, ctx }) => {
       return {
-        message: getErrorMessage(shape),
+        message: getErrorMessage(shape, ctx?.t),
         code: shape.code,
         data: {
           code: shape.data.code,

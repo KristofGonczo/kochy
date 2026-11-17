@@ -17,13 +17,13 @@ export const tripsRouter = {
     .input(
       z
         .object({
-          name: z.string().trim().min(1, { message: "nameRequired" }),
-          from: z.iso.datetime().nonoptional({ message: "fromRequired" }),
-          to: z.iso.datetime().nonoptional({ message: "toRequired" }),
+          name: z.string().trim().min(1, { message: "Trips.nameRequired" }),
+          from: z.iso.datetime().nonoptional({ message: "Trips.fromRequired" }),
+          to: z.iso.datetime().nonoptional({ message: "Trips.toRequired" }),
         })
         .refine((input) => input.from <= input.to, {
           path: ["to"],
-          message: "toBeforeFrom",
+          message: "Trips.toBeforeFrom",
         }),
     )
     .mutation(async ({ ctx, input }) => {

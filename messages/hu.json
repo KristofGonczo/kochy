@@ -1,4 +1,13 @@
 {
+  "Backend": {
+    "internalServerError": "Kiszolgáló hiba.",
+    "Trips": {
+      "nameRequired": "A név megadása kötelező.",
+      "fromRequired": "A kezdés dátumának megadása kötelező.",
+      "toRequired": "A befejezés dátumának megadása kötelező.",
+      "toBeforeFrom": "A befejezés dátuma nem lehet korábbi, mint a kezdés dátuma."
+    }
+  },
   "Login": {
     "title": "Üdv újra",
     "description": "Jelentkezz be a Kochy-ba.",
@@ -53,11 +62,7 @@
     "from": "Kezdés",
     "to": "Befejezés",
     "creating": "Létrehozás...",
-    "create": "Létrehozás",
-    "nameRequired": "A név megadása kötelező.",
-    "fromRequired": "A kezdés dátumának megadása kötelező.",
-    "toRequired": "A befejezés dátumának megadása kötelező.",
-    "toBeforeFrom": "A befejezés dátuma nem lehet korábbi, mint a kezdés dátuma."
+    "create": "Létrehozás"
   },
   "DatePicker": {
     "pickADate": "Válassz dátumot"

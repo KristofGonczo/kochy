@@ -1,4 +1,11 @@
 {
+  "Backend": {
+    "internalServerError": "Internal server error.",
+    "nameRequired": "Name is required.",
+    "fromRequired": "The start date is required.",
+    "toRequired": "The end date is required.",
+    "toBeforeFrom": "The end date cannot be before the start date."
+  },
   "Login": {
     "title": "Welcome back",
     "description": "Sign in to continue to Kochy.",
@@ -53,11 +60,7 @@
     "from": "From",
     "to": "To",
     "creating": "Creating...",
-    "create": "Create trip",
-    "nameRequired": "Name is required.",
-    "fromRequired": "The start date is required.",
-    "toRequired": "The end date is required.",
-    "toBeforeFrom": "The end date cannot be before the start date."
+    "create": "Create trip"
   },
   "DatePicker": {
     "pickADate": "Pick a date"
