@@ -3,3 +3,12 @@ allowBuilds:
   '@swc/core': true
   esbuild: true
   unrs-resolver: true
+permissions:
+  '@trpc/client':
+    skills: false
+  '@trpc/server':
+    skills: false
+  '@trpc/tanstack-react-query':
+    skills: false
+  drizzle-kit:
+    skills: false
