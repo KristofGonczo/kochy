@@ -1,5 +1,6 @@
 import { auth } from "@/lib/auth";
 import { initTRPC, TRPCError } from "@trpc/server";
+import { getErrorMessage } from "./util";
 
 /**
  * This context creator accepts `headers` so it can be reused in both
@@ -27,10 +28,7 @@ const t = initTRPC
      */
     errorFormatter: ({ shape }) => {
       return {
-        message:
-          shape.data.code === "INTERNAL_SERVER_ERROR"
-            ? "Internal server error"
-            : shape.message,
+        message: getErrorMessage(shape),
         code: shape.code,
         data: {
           code: shape.data.code,
