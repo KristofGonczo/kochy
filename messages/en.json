@@ -41,5 +41,8 @@
     "noTripsYet": "No Trips Yet",
     "noTripsDescription": "You haven't created any trips yet. Get started by creating your first trip.",
     "createTrip": "Create Trip"
+  },
+  "Trips": {
+    "searchPlaceholder": "Search trips..."
   }
 }

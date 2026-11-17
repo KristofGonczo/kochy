@@ -20,7 +20,7 @@ export default async function ProtectedLayout({ children }: LayoutProps<"/">) {
   return (
     <SidebarProvider defaultOpen={sidebarState !== "false"}>
       <Sidebar initialLocale={locale} />
-      <main className="w-full md:w-md lg:w-3xl mx-auto">{children}</main>
+      <main className="w-full md:w-md lg:w-3xl mx-auto mt-2">{children}</main>
     </SidebarProvider>
   );
 }

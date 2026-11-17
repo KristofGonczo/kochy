@@ -41,5 +41,8 @@
     "noTripsYet": "Még nincs utazás",
     "noTripsDescription": "Még nem hoztál létre utazást. Kezdd azzal, hogy létrehozod az első utazásodat.",
     "createTrip": "Utazás létrehozása"
+  },
+  "Trips": {
+    "searchPlaceholder": "Utazások keresése..."
   }
 }
