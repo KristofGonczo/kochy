@@ -44,5 +44,22 @@
   },
   "Trips": {
     "searchPlaceholder": "Search trips..."
+  },
+  "NewTrip": {
+    "open": "Create trip",
+    "title": "Create a trip",
+    "description": "Add the details for your trip.",
+    "name": "Name",
+    "from": "From",
+    "to": "To",
+    "creating": "Creating...",
+    "create": "Create trip",
+    "nameRequired": "Name is required.",
+    "fromRequired": "The start date is required.",
+    "toRequired": "The end date is required.",
+    "toBeforeFrom": "The end date cannot be before the start date."
+  },
+  "DatePicker": {
+    "pickADate": "Pick a date"
   }
 }

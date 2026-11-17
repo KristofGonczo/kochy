@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/button";
+import NewTripDialog from "@/components/pages/trips/new-trip-dialog/new-trip-dialog";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
-import { Plus, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 const TripsControls = async () => {
@@ -21,9 +21,7 @@ const TripsControls = async () => {
           <Search />
         </InputGroupAddon>
       </InputGroup>
-      <Button type="button" size="icon">
-        <Plus />
-      </Button>
+      <NewTripDialog />
     </div>
   );
 };
