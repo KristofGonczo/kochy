@@ -1,4 +1,11 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import TripCardActions from "@/components/pages/trips/trip-card/trip-card-actions";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { trip as tripSchema } from "@/db/schema";
 import { InferSelectModel } from "drizzle-orm";
 import { getFormatter } from "next-intl/server";
@@ -19,6 +26,9 @@ const TripCard = async ({
             {trip.name}
           </Link>
         </CardTitle>
+        <CardAction>
+          <TripCardActions tripId={trip.id} tripName={trip.name} />
+        </CardAction>
       </CardHeader>
       <CardContent className="space-y-2">
         <p>

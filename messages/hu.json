@@ -54,6 +54,13 @@
   "Trips": {
     "searchPlaceholder": "Utazások keresése..."
   },
+  "TripCardActions": {
+    "delete": "Törlés",
+    "confirmTitle": "Törlés megerősítése",
+    "confirmDescription": "Biztosan törölni szeretnéd ezt az utazást: {tripName}?",
+    "cancel": "Mégse",
+    "confirmDelete": "Utazás törlése"
+  },
   "NewTrip": {
     "open": "Utazás létrehozása",
     "title": "Utazás létrehozása",

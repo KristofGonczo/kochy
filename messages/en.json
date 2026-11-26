@@ -52,6 +52,13 @@
   "Trips": {
     "searchPlaceholder": "Search trips..."
   },
+  "TripCardActions": {
+    "delete": "Delete",
+    "confirmTitle": "Delete trip?",
+    "confirmDescription": "Are you sure you want to delete {tripName}?",
+    "cancel": "Cancel",
+    "confirmDelete": "Delete trip"
+  },
   "NewTrip": {
     "open": "Create trip",
     "title": "Create a trip",
