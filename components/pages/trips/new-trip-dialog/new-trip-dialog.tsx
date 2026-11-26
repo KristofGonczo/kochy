@@ -14,7 +14,7 @@ import {
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { useTRPC } from "@/trpc/client";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Plus } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Form from "next/form";
@@ -30,6 +30,7 @@ type NewTripFormValues = {
 const NewTripDialog = () => {
   const t = useTranslations("NewTrip");
   const trpc = useTRPC();
+  const queryClient = useQueryClient();
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [formValues, setFormValues] = useState<NewTripFormValues>({
@@ -41,6 +42,9 @@ const NewTripDialog = () => {
   const createTrip = useMutation(
     trpc.trips.create.mutationOptions({
       onSuccess: () => {
+        queryClient.invalidateQueries({
+          queryKey: trpc.trips.list.queryKey(),
+        });
         setOpen(false);
         router.refresh();
       },
