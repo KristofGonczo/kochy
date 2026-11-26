@@ -64,8 +64,7 @@
     "title": "Create a trip",
     "description": "Add the details for your trip.",
     "name": "Name",
-    "from": "From",
-    "to": "To",
+    "dateRange": "Date",
     "creating": "Creating...",
     "create": "Create trip"
   },

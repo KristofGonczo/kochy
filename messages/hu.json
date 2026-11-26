@@ -66,8 +66,7 @@
     "title": "Utazás létrehozása",
     "description": "Add meg az utazás részleteit.",
     "name": "Név",
-    "from": "Kezdés",
-    "to": "Befejezés",
+    "dateRange": "Dátum",
     "creating": "Létrehozás...",
     "create": "Létrehozás"
   },

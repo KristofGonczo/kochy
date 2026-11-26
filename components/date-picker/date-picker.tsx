@@ -20,12 +20,17 @@ const DatePicker = (props: DatePickerProps) => {
 
   const [open, setOpen] = useState(false);
 
-  const displayDate =
-    props.mode === "multiple"
-      ? props.selected?.[0]
-      : props.mode === "range"
-        ? props.selected?.from
-        : props.selected;
+  const displayDateLabel = () => {
+    if (props.mode === "multiple") {
+      return props.selected?.[0] ? formatter.dateTime(props.selected?.[0]) : "";
+    }
+    if (props.mode === "range") {
+      if (!props.selected?.from || !props.selected?.to) return "";
+
+      return `${formatter.dateTime(props.selected?.from)} - ${formatter.dateTime(props.selected?.to)}`;
+    }
+    return props.selected ? formatter.dateTime(props.selected) : "";
+  };
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -36,11 +41,7 @@ const DatePicker = (props: DatePickerProps) => {
             data-empty={!props.selected}
             className="justify-between"
           >
-            {displayDate ? (
-              formatter.dateTime(displayDate)
-            ) : (
-              <span>{props.placeholder || t("pickADate")}</span>
-            )}
+            {displayDateLabel() || props.placeholder || t("pickADate")}
             <CalendarIcon data-icon="inline-end" />
           </Button>
         }

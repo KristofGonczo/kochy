@@ -101,27 +101,15 @@ const NewTripDialog = () => {
               />
             </Field>
             <Field>
-              <FieldLabel>{t("from")}</FieldLabel>
+              <FieldLabel>{t("dateRange")}</FieldLabel>
               <DatePicker
-                mode="single"
-                selected={formValues.from}
-                onSelect={(date) =>
+                mode="range"
+                selected={{ from: formValues.from, to: formValues.to }}
+                onSelect={(range) =>
                   setFormValues((values) => ({
                     ...values,
-                    from: date ?? new Date(),
-                  }))
-                }
-              />
-            </Field>
-            <Field>
-              <FieldLabel htmlFor="to">{t("to")}</FieldLabel>
-              <DatePicker
-                mode="single"
-                selected={formValues.to}
-                onSelect={(date) =>
-                  setFormValues((values) => ({
-                    ...values,
-                    to: date ?? new Date(),
+                    from: range?.from ?? new Date(),
+                    to: range?.to ?? new Date(),
                   }))
                 }
               />
@@ -132,7 +120,12 @@ const NewTripDialog = () => {
               </p>
             )}
             <DialogFooter>
-              <Button type="submit" disabled={createTrip.isPending}>
+              <Button
+                type="submit"
+                disabled={
+                  createTrip.isPending || !formValues.from || !formValues.to
+                }
+              >
                 {createTrip.isPending ? t("creating") : t("create")}
               </Button>
             </DialogFooter>
