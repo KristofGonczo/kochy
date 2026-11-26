@@ -1,6 +1,6 @@
 import { db } from "@/db/drizzle";
 import { trip } from "@/db/schema";
-import { desc } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 import { InferSelectModel } from "drizzle-orm/table";
 import { z } from "zod";
 import { protectedProcedure } from "../init";
@@ -38,5 +38,10 @@ export const tripsRouter = {
         .returning();
 
       return createdTrip;
+    }),
+  delete: protectedProcedure
+    .input(z.object({ id: z.number().positive() }))
+    .mutation(async ({ input }) => {
+      return await db.delete(trip).where(eq(trip.id, input.id));
     }),
 };
