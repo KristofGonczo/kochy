@@ -74,7 +74,11 @@ const NewTripDialog = ({ triggerLabel }: { triggerLabel?: string }) => {
     >
       <DialogTrigger
         render={
-          <Button type="button" size="icon" aria-label={t("open")}>
+          <Button
+            type="button"
+            size={triggerLabel ? "default" : "icon"}
+            aria-label={t("open")}
+          >
             {triggerLabel || <Plus />}
           </Button>
         }
