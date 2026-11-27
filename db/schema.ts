@@ -1,7 +1,9 @@
-import { defineRelations } from "drizzle-orm";
+import { defineRelations, sql } from "drizzle-orm";
 import {
   date,
   index,
+  pgPolicy,
+  pgRole,
   pgTable,
   serial,
   text,
@@ -11,7 +13,13 @@ import { user } from "./auth-schema";
 
 export * from "./auth-schema";
 
-export const trip = pgTable(
+export const appUser = pgRole("app_user", {
+  createRole: false,
+  createDb: false,
+  inherit: true,
+});
+
+export const trip = pgTable.withRLS(
   "trip",
   {
     id: serial("id").primaryKey(),
@@ -27,7 +35,16 @@ export const trip = pgTable(
       .$onUpdate(() => new Date())
       .notNull(),
   },
-  (table) => [index("trip_owner_id_idx").on(table.ownerId)],
+  (table) => [
+    index("trip_owner_id_idx").on(table.ownerId),
+    pgPolicy("trip_owner_isolation", {
+      as: "permissive",
+      for: "all",
+      to: "app_user",
+      using: sql`${table.ownerId} = current_setting('app.current_user_id', true)`,
+      withCheck: sql`${table.ownerId} = current_setting('app.current_user_id', true)`,
+    }),
+  ],
 );
 
 export const relations = defineRelations({ trip, user }, (r) => ({

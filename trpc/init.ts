@@ -1,3 +1,4 @@
+import { withUserRLS, type RLSTransaction } from "@/db/rls";
 import { auth } from "@/lib/auth";
 import { initTRPC, TRPCError } from "@trpc/server";
 import { getTranslations } from "next-intl/server";
@@ -53,7 +54,10 @@ export const protectedProcedure = t.procedure.use(async ({ ctx, next }) => {
   }
   return next({
     ctx: {
+      ...ctx,
       user: ctx.user,
+      runAsUser: <T>(fn: (tx: RLSTransaction) => Promise<T>) =>
+        withUserRLS(ctx.user?.id, fn),
     },
   });
 });

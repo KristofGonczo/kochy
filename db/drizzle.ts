@@ -11,3 +11,11 @@ export const db = drizzle({
   client: pool,
   relations: { ...relations, ...authRelations },
 });
+
+const rlsPool = new Pool({
+  connectionString: process.env.DATABASE_APP_USER_URL!,
+});
+export const rlsDb = drizzle({
+  client: rlsPool,
+  relations: { ...relations, ...authRelations },
+});
