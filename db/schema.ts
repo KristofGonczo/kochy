@@ -17,7 +17,7 @@ export const appUser = pgRole("app_user", {
   createRole: false,
   createDb: false,
   inherit: true,
-});
+}).existing();
 
 export const trip = pgTable.withRLS(
   "trip",

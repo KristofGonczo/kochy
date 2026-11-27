@@ -1,0 +1,15 @@
+-- Custom SQL migration file, put your code below! --
+CREATE ROLE "app_user";
+ALTER ROLE "app_user" WITH PASSWORD 'app_user_password';
+ALTER ROLE "app_user" WITH INHERIT;
+ALTER ROLE "app_user" WITH LOGIN;
+
+GRANT USAGE ON SCHEMA public TO "app_user";
+
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO "app_user";
+
+ALTER DEFAULT PRIVILEGES FOR ROLE kochy IN SCHEMA public
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO "app_user";
+
+ALTER DEFAULT PRIVILEGES FOR ROLE kochy IN SCHEMA public
+GRANT USAGE, SELECT ON SEQUENCES TO "app_user";
