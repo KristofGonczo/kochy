@@ -27,7 +27,7 @@ type NewTripFormValues = {
   to: Date;
 };
 
-const NewTripDialog = () => {
+const NewTripDialog = ({ triggerLabel }: { triggerLabel?: string }) => {
   const t = useTranslations("NewTrip");
   const trpc = useTRPC();
   const queryClient = useQueryClient();
@@ -75,7 +75,7 @@ const NewTripDialog = () => {
       <DialogTrigger
         render={
           <Button type="button" size="icon" aria-label={t("open")}>
-            <Plus />
+            {triggerLabel || <Plus />}
           </Button>
         }
       />

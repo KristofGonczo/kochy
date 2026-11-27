@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   Empty,
   EmptyContent,
@@ -9,6 +8,7 @@ import {
 } from "@/components/ui/empty";
 import { Plane } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import NewTripDialog from "../new-trip-dialog/new-trip-dialog";
 
 const NoTrips = async () => {
   const t = await getTranslations("NoTrips");
@@ -23,7 +23,7 @@ const NoTrips = async () => {
         <EmptyDescription>{t("noTripsDescription")}</EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <Button>{t("createTrip")}</Button>
+        <NewTripDialog triggerLabel={t("createTrip")} />
       </EmptyContent>
     </Empty>
   );
