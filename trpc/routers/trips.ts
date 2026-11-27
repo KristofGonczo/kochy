@@ -1,4 +1,3 @@
-import { db } from "@/db/drizzle";
 import { trip } from "@/db/schema";
 import { desc, eq } from "drizzle-orm";
 import { InferSelectModel } from "drizzle-orm/table";
@@ -7,8 +6,10 @@ import { protectedProcedure } from "../init";
 
 export const tripsRouter = {
   list: protectedProcedure.query(
-    async (): Promise<InferSelectModel<typeof trip>[]> => {
-      const trips = await db.select().from(trip).orderBy(desc(trip.startDate));
+    async ({ ctx }): Promise<InferSelectModel<typeof trip>[]> => {
+      const trips = await ctx.runAsUser((tx) =>
+        tx.select().from(trip).orderBy(desc(trip.startDate)),
+      );
 
       return trips;
     },
@@ -27,21 +28,25 @@ export const tripsRouter = {
         }),
     )
     .mutation(async ({ ctx, input }) => {
-      const [createdTrip] = await db
-        .insert(trip)
-        .values({
-          ownerId: ctx.user.id,
-          name: input.name,
-          startDate: new Date(input.from),
-          endDate: new Date(input.to),
-        })
-        .returning();
+      const [createdTrip] = await ctx.runAsUser((tx) =>
+        tx
+          .insert(trip)
+          .values({
+            ownerId: ctx.user.id,
+            name: input.name,
+            startDate: new Date(input.from),
+            endDate: new Date(input.to),
+          })
+          .returning(),
+      );
 
       return createdTrip;
     }),
   delete: protectedProcedure
     .input(z.object({ id: z.number().positive() }))
-    .mutation(async ({ input }) => {
-      return await db.delete(trip).where(eq(trip.id, input.id));
+    .mutation(async ({ ctx, input }) => {
+      return await ctx.runAsUser((tx) =>
+        tx.delete(trip).where(eq(trip.id, input.id)),
+      );
     }),
 };
